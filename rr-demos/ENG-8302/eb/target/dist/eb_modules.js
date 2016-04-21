@@ -1292,7 +1292,6 @@ ebApp.factory('ebTrackService', ['$http', '$q', '$document', '$log', 'ebPingServ
   'use strict';
 
   var doTrack = function(type, trackParams, extra) {
-    debugger;
     ebPingService.getUserInfo.then(function(userInfo) {
       var params = angular.merge({}, trackParams, extra, userInfo);
       $log.info('[TRACKING]', type, params);
