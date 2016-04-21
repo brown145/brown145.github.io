@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <script src="http://localhost:35729/livereload.js"></script> -->
+    <link rel="stylesheet" href="target/dist/rr_modules.css" />
+    <title>RR Search Demo</title>
+  </head>
+
+  <body>
+    <script src="http://media.richrelevance.com/rrserver/js/1.1/p13n.js"></script>
+    <script>
+      function rrUpdateImagePath(){
+        // no-op to prefent p13n_generated.js errors
+      }
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+    </script>
+    <script charset="utf-8" type="text/javascript">
+      var R3_COMMON = new r3_common();
+      R3_COMMON.setApiKey('showcaseparent');
+      R3_COMMON.setBaseUrl('http://recs.richrelevance.com/rrserver/');
+      R3_COMMON.setClickthruServer("http://"+window.location.host);
+      R3_COMMON.setSessionId('6B4D397B');
+      R3_COMMON.setUserId('1');
+      R3_COMMON.setChannel('testChannel'); // will require ENG-5672 to work correctly
+      R3_COMMON.setRegionId('testRegion');
+
+      // using a placement but not actually added to page
+      R3_COMMON.addPlacementType('search_page.sort');
+
+      var R3_SEARCH = new r3_search();
+      // static data that does not page with dynamic page as only one p13n_generated request is made
+      R3_SEARCH.setTerms(getParameterByName('q'));
+      // R3_COMMON.addItemId('');
+
+      r3();
+
+    </script>
+    <div id="richrelevanceSearchUI"></div>
+    <script src="target/dist/rr_libs.js"></script>
+    <script src="target/dist/rr_modules.js"></script>
+    <script>
+      richrelevanceSearchUI.config('http://recs.richrelevance.com/rrserver/api/v1', {
+        apiKey: R3_COMMON.apiKey,
+        searchPlacement: 'search_page.sort',
+        lang: 'en',
+        displayLang: 'en',
+        scope: 'default',
+        defaultCurrency: 'USD',
+        disableTracking: true
+      }, document.getElementById('richrelevanceSearchUI'));
+    </script>
+  </body>
+</html>

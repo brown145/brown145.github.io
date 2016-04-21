@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="http://localhost:35729/livereload.js"></script>
+    <link rel="stylesheet" href="target/dist/eb_modules.css" />
+    <title>EmpathyBroker Demo</title>
+  </head>
+
+  <body>
+    <div id="EmpathyBrokerUI"></div>
+    <script src="target/dist/eb_libs.js"></script>
+    <script src="target/dist/eb_modules.js"></script>
+    <script>
+      EmpathyBrokerUI.config('https://ebdemo.empathybroker.com/sb-demo-guide', {
+        lang: 'en',
+        displayLang: 'en',
+        scope: 'default',
+        defaultCurrency: 'EUR',
+        disableTracking: true
+      }, document.getElementById('EmpathyBrokerUI'));
+    </script>
+  </body>
+</html>
